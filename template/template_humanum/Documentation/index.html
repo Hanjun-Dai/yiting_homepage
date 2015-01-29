@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Humanum – vCard Template Documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic">
+		<meta name="author" content="Lebensform">
+		<link rel="stylesheet" href="assets/css/bootstrap.css">
+		<link rel="stylesheet" href="assets/css/bootstrap-responsive.css">
+		<link rel="stylesheet" href="assets/js/google-code-prettify/prettify.css">
+		<style>
+			body {
+				background: url(assets/img/background.jpg) no-repeat 0 0;
+				font-family: Lato, Helvetica, Arial, sans-serif;
+			}
+			
+			.main-content {
+				padding-bottom: 80px;
+				background: #fff;
+			}
+			
+			section {
+				padding: 60px 0 0 0;
+			}
+			
+			#intro {
+				padding-top: 100px;
+				padding-bottom: 70px;
+				color: #fff;
+			}
+			
+			#intro h1 {
+				font-weight: normal;
+				font-size: 60px;
+			}
+			
+			#intro h2 {
+				font-weight: normal;
+				font-size: 25px;
+			}
+			
+			#intro hr.light {
+				margin: 40px 0;
+				border-width: 1px 0 0;
+				opacity: .1;
+			}
+			
+			#intro a {
+				color: #fff;
+			}
+			
+			.invisible {
+				visibility: hidden;
+			}
+		</style>
+	</head>
+			
+	<body data-spy="scroll" data-target=".navbar" id="top">
+	
+
+		<div class="navbar navbar-fixed-top navbar-inverse">
+			<div class="navbar-inner">
+				<div class="container">
+					<div class="nav-collapse">
+						<ul class="nav">
+							<li><a href="#general">General Information</a></li>
+							<li><a href="#files">Files</a></li>
+							<li><a href="#markup">Markup</a></li>
+							<li><a href="#styles">Styles</a></li>
+							<li><a href="#javascript">JavaScript</a></li>
+							<li><a href="#emails">E-mails</a></li>
+							<li><a href="#psd">PSD</a></li>
+							<li><a href="#credits">Credits</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">
+		
+			<section id="intro">
+			
+				<hgroup>
+					<h1>Humanum</h1>
+					<h2>vCard Template Documentation</h2>
+				</hgroup>
+				
+				<hr class="invisible">
+				
+				<p>
+					<b>Author:</b>
+					Lebensform, <a href="http://themeforest.net/user/Lebensform">http://themeforest.net/user/Lebensform</a><br>
+					<b>Contact:</b>
+					<a href="mailto:hello@lebensform.me">hello@lebensform.me</a><br>
+					<b>Last Modified:</b>
+					2013-08-01
+				</p>
+				
+				<hr class="light">
+				
+				<p>Hello! First of all, I would like to thank you for purchasing my template. You're awesome.</p>
+				
+				<p>This documentation will show you how to use the Humanum vCard Template. If you have any questions that are beyond the scope of this help file, please feel free to email me via my <a href="http://themeforest.net/user/Lebensform">ThemeForest user page</a> contact form.</p>
+			
+			</section>
+			
+		</div>
+		
+		<div class="main-content">
+		
+		<div class="container">
+			
+			<section id="general">
+				<div class="page-header">
+					<h1>General Information</h1>
+				</div>
+				<h3>Browser Support</h3>
+				<p>“Humanum” supports all modern browsers, including Safari, Chrome, Firefox, Opera and Internet Explorer 9+. Internet Explorer 8 and older versions are not supported.</p>
+				<hr>
+				<h3>Navigation</h3>
+				<p>Thanks to AJAX and HTML5 History API, navigation between pages is done without reloading the browser window.</p>
+				<div class="alert alert-info"><b>Chrome users:</b> By default, Chrome doesn't support local AJAX requests. In order to test the navigation without reloading the browser window, please either run your website on hosted environment, use a different browser (i.e. Firefox) or run your Chrome with special parameter (<a href="http://code.google.com/p/chromium/issues/detail?id=40787&q=ajax%20local&colspec=ID%20Stars%20Pri%20Area%20Feature%20Type%20Status%20Summary%20Modified%20Owner%20Mstone%20OS">more info</a>).</div>
+			</section>
+			
+			<section id="files">
+				<div class="page-header">
+					<h1>Files</h1>
+				</div>
+				
+				<div class="row-fluid">
+					<div class="span3">
+						<p>This template contains 6 HTML pages:</p>
+						<p>Feel free to modify or delete any of these. You can even create new ones based on existing samples.</p>
+					</div>
+					<div class="span9">
+						<table class="table table-bordered">
+							<tr><td><code>index.html</code></td></tr>
+							<tr><td><code>about-me.html</code></td></tr>
+							<tr><td><code>resume.html</code></td></tr>
+							<tr><td><code>portfolio.html</code></td></tr>
+							<tr><td><code>contact.html</code></td></tr>
+							<tr><td><code>extras.html</code></td></tr>
+						</table>
+					</div>
+				</div>
+				
+				<hr>
+				
+				<div class="row-fluid">
+				
+					<div class="span3">
+						<p>Besides the <code>.html</code> files, the template contains several directories listed as follows:</p>
+					</div>
+					
+					<div class="span9">
+				
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>Directory</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>css</code></td>
+									<td>Stylesheet files</td>
+								</tr>
+								<tr>
+									<td><code>fonts</code></td>
+									<td>Web font files (in this case, only icon fonts are included)</td>
+								</tr>
+								<tr>
+									<td><code>gfx</code></td>
+									<td>Graphic files used by the template</td>
+								</tr>
+								<tr>
+									<td><code>img</code></td>
+									<td>Images that are not associated with the template (such as profile pictures etc.)</td>
+								</tr>
+								<tr>
+									<td><code>js</code></td>
+									<td>JavaScript files</td>
+								</tr>
+								<tr>
+									<td><code>less</code></td>
+									<td>CSS preprocessor sources (LESS)</td>
+								</tr>
+								<tr>
+									<td><code>mail</code></td>
+									<td>PHP files to support the contact form</td>
+								</tr>
+							</tbody>
+						</table>
+						
+					</div>
+				</div>
+			</section>
+
+			<section id="markup">
+			
+				<div class="page-header">
+					<h1>Markup</h1>
+				</div>
+			
+				<div class="row-fluid">
+					<div class="span3">
+						<h3>General Structure</h3>
+						<p>The general HTML structure is the same throughout all the pages. It's quite simple:</p>
+						<p>As you can guess, all your custom content is contained within <code>div.man-content</code>.</p>
+					</div>
+			
+					<div class="span9"> 
+
+<pre class="prettyprint linenums">&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        ...
+    &lt;/head&gt;
+    &lt;body&gt;
+    
+        &lt;header id=&quot;header&quot;&gt;
+            &lt;h1&gt;&lt;a href=&quot;index.html&quot;&gt;Name&lt;/a&gt;&lt;/h1&gt;
+            &lt;h2&gt;Title&lt;/h2&gt;
+        &lt;/header&gt;
+        
+        &lt;div id=&quot;container&quot;&gt;
+            
+            &lt;nav id=&quot;mainnav&quot; role=&quot;navigation&quot;&gt;
+                menu items
+                ...
+            &lt;/nav&gt;
+            
+            &lt;div class=&quot;main-content&quot;&gt;
+                page content
+                ...
+            &lt;/div&gt; &lt;!-- /main-content --&gt;
+        
+        &lt;/div&gt; &lt;!-- /container --&gt;
+        
+        &lt;footer id=&quot;footer&quot;&gt;
+            footer
+            ...
+        &lt;/footer&gt; &lt;!-- /footer --&gt;
+
+    &lt;/body&gt;
+&lt;/html&gt;</pre>
+<!-- Code Block >> End -->				   
+
+					</div>
+
+				</div>
+				
+			</section>
+
+			<section id="styles">
+				<div class="page-header">
+					<h1>Styles</h1>
+				</div>
+			
+				<div class="row-fluid">
+					<div class="span3">
+						<h3>Stylesheets</h3>
+						<p>Here's a list of the stylesheet files used by this template. You can find all of them in the <code>/css</code> directory.</p>
+					</div>
+					<div class="span9">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>File Name</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>icons.css</code></td>
+									<td><b>Stylesheet for the icon font</b><br><br> We use Entypo icon font by Daniel Bruce</td>
+								</tr>
+								<tr>
+									<td><code>normalize.css</code></td>
+									<td><b>CSS normalization file</b><br><br> Many browser interpret the default style of html elements differently. By using a general CSS normalization file, we can make to style elements in the same way. It's not recommended to modify this file.</td>
+								</tr>
+								<tr>
+									<td>
+										<p style="line-height: 2">
+											<code>skin-gold.css</code><br>
+											<code>skin-silver.css</code><br>
+											<code>skin-blue.css</code><br>
+											<code>skin-red.css</code><br>
+											<code>skin-green.css</code><br>
+											<code>skin-brown.css</code><br>
+											<code>skin-lightblue.css</code><br>
+											<code>skin-white.css</code>
+										</p>
+									</td>
+									<td><b>Main CSS files with 8 different color styles</b><br><br> These are CSS files responsible for styling all the elements of the template.<br> Please note that you can have included only one of them in the same time.<br><br>
+										If you want to switch between the color versions, modify the <code>href</code> attribute of the <code>link</code> element responsible for including main CSS file in yout HTML files:<br><br>
+										<pre class="prettyprint">&lt;link rel=&quot;stylesheet&quot; href=&quot;css/skin-[your-color].css&quot;&gt;</pre>
+									</td>
+								</tr>
+								<tr>
+									<td><code>no-js.css</code></td>
+									<td><b>Styles for JavaScript-disabled browsers</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<hr>
+				
+				<h3>Color Styles</h3>
+				
+				<p>This template comes with 8 different color versions to choose from:<br><br></p>
+				
+				<div class="row-fluid text-center">
+					<div class="span3">
+						<p><img src="assets/img/display-1.png" alt=""></p>
+						<p>Gold</p>
+					</div>
+					<div class="span3">
+						<p><img src="assets/img/display-2.png" alt=""></p>
+						<p>Silver</p>
+					</div>
+					<div class="span3">
+						<p><img src="assets/img/display-3.png" alt=""></p>
+						<p>Blue</p>
+					</div>
+					<div class="span3">
+						<p><img src="assets/img/display-4.png" alt=""></p>
+						<p>Red</p>
+					</div>
+				</div>
+				<div class="row-fluid text-center">
+					<div class="span3">
+						<p><img src="assets/img/display-5.png" alt=""></p>
+						<p>Green</p>
+					</div>
+					<div class="span3">
+						<p><img src="assets/img/display-6.png" alt=""></p>
+						<p>Brown</p>
+					</div>
+					<div class="span3">
+						<p><img src="assets/img/display-7.png" alt=""></p>
+						<p>Light Blue</p>
+					</div>
+					<div class="span3">
+						<p><img src="assets/img/display-8.png" alt=""></p>
+						<p>White</p>
+					</div>
+				</div>
+				
+				<hr>
+				
+				<div class="row-fluid">
+					<div class="span3">
+						<h3>CSS Structure</h3>
+						<p>All the CSS styles are divided into 30 logical modules.</p>
+						<p>All of them are indicated with appropriate CSS comment, so you will be able to easily find where each module starts and ends.</p>
+					</div>
+				
+					<div class="span9">
+					
+<!-- Code Block >> Start -->				   
+<pre class="prettyprint linenums">Layout & Grid System
+Body Background
+Text & Typography
+List Styles
+Links & Buttons
+Images
+Forms
+Alerts
+Ribbons
+Sliders
+Tabs
+Accordions
+Filter Tabs
+Content Switch
+Header
+Main Menu
+Footer
+Content Footer
+Boxes
+Tooltips
+Popups
+Social Media Buttons
+Homepage
+Resume
+Portfolio
+Contact
+Media Queries
+Initial Animations
+IE Fixes
+Template Preview Styles</pre>
+<!-- Code Block >> End -->				   
+
+					</div>
+				</div>
+				
+				<hr>
+				
+				<p>If you would like to edit style of a specific element of the site, simply find the appropriate module in the CSS file, and then scroll down until you find the appropriate element that needs to be edited.</p>
+				
+				<div class="alert alert-info"><b>Pro Tip:</b> If you are familiar with LESS, you can modify styles faster and much more effectively. Just use LESS sources included with the template in the <code>less</code> directory.</div>
+				
+			</section>
+
+			<section id="javascript">
+			
+				<div class="page-header">
+					<h1>JavaScript</h1>
+				</div>
+				
+				<div class="row-fluid">
+					<div class="span3">
+						<h3>JavaScript Files</h3>
+						<p><p>Here's a list of the JavaScript files used by this template. You can find all of them in the <code>/js</code> directory.</p></p>
+					</div>
+					<div class="span9">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>File Name</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>scripts.js</code></td>
+									<td>The main JavaScript file which controlls behaviour of all the elements of the template</td>
+								</tr>
+								<tr>
+									<td><code>jquery.min.js</code></td>
+									<td>A JavaScript library. Quite famous, huh?</td>
+								</tr>
+								<tr>
+									<td><code>jquery.backstretch.min.js</code></td>
+									<td>A jQuery plugin that allows you to add a dynamically-resized background image to any page or element</td>
+								</tr>
+								<tr>
+									<td><code>jquery.cycle2.min.js</code></td>
+									<td>A simple and versatile slideshow plugin</td>
+								</tr>
+								<tr>
+									<td><code>jquery.cycle2.swipe.min.js</code></td>
+									<td>Supports the swipe gesture for advancing slides on touch devices</td>
+								</tr>
+								<tr>
+									<td><code>jquery.magnific-popup.min.js</code></td>
+									<td>A responsive jQuery lightbox plugin</td>
+								</tr>
+								<tr>
+									<td><code>jquery.mixitup.min.js</code></td>
+									<td>A CSS3 and jQuery filter &amp; sort plugin</td>
+								</tr>
+								<tr>
+									<td><code>jquery.placeholder.min.js</code></td>
+									<td>A jQuery plugin that enables HTML5 placeholder behavior for browsers that aren’t trying hard enough yet</td>
+								</tr>
+								<tr>
+									<td><code>jquery.tooltipster.min.js</code></td>
+									<td>A jQuery plugin for creating semantic, modern tooltips enhanced with the power of CSS</td>
+								</tr>
+								<tr>
+									<td><code>parsley.min.js</code></td>
+									<td>A Javascript forms validator</td>
+								</tr>
+								<tr>
+									<td><code>twitter-fetcher.min.js</code></td>
+									<td>A handy tool for displaying your Twitter posts on your website</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<hr>
+				
+				<h3>JavaScript Customization</h3>
+				<p>At the top of your <code>scripts.js</code> file you can find following code:</p>
+				<pre class="prettyprint linenums">// Settings
+var settings = {
+    pageTransition: 'scroll-vertical', // page transition (fade, scale, scroll-vertical, scroll-horizontal)
+    bodyBackgroundImage: true, // show body background image? (true, false)
+    bodyBackgroundImagePath: 'img/background-1.jpg', // path to the background image
+    twitterWidgetId: '355933225069187074' // your Twitter widget ID (see the documentation)
+}</pre>
+				
+				<p>Below are detailed descriptions of each option:</p>
+			
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Variable</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>pageTransition</code></td>
+							<td>Here you can define the page transition effect. Values: <code>fade</code>, <code>scale</code>, <code>scroll-vertical</code>, <code>scroll-horizontal</code>.</td>
+						</tr>
+						<tr>
+							<td><code>bodyBackgroundImage</code></td>
+							<td>You can choose if you want to have an image as your website background. The default value is <code>true</code>, but you can set it to <code>false</code> if you want to remove the image and control the background from your CSS file.</td>
+						</tr>
+						<tr>
+							<td><code>bodyBackgroundImagePath</code></td>
+							<td>The path of your body background. Please note that it should be relative to your HTML files (and not the JavaScript file).</td>
+						</tr>
+						<tr>
+							<td><code>twitterWidgetId</code></td>
+							<td>If you want to have a <b>Twitter feed</b> on your website, define the Twitter widget ID here. How to get the Twitter widget ID? It's a bit tricky, but here is how:
+								
+								<ol>
+									<li>Go to <a href="htp://twitter.com">twitter.com</a> and sign in.</li>
+									<li>Go to your settings page.</li>
+									<li>Go to “Widgets” on the left hand side and click “Create new”.</li>
+									<li>Click on the “Create widget” button (you don't have to fill any fields above).</li>
+									<li>Copy the received code you are supposed to paste into your site.</li>
+									<li>In this code find the <code>data-widget-id</code> attribute and copy its value. It's your Twitter widget ID. Voila!</li>
+								</ol>
+								
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			
+			</section>
+
+			<section id="emails">
+				<div class="page-header">
+					<h1>E-mails</h1>
+				</div>
+				<p>In order to enable sending e-mails through your contact form, you have to meet 2 conditions:</p>
+				<ol>
+					<li>Have a PHP-enabled server</li>
+					<li>Edit your mail server settings – you can find those settings at the top of the <code>mail/send.php</code> file:</li>
+				</ol>
+				<pre class="prettyprint linenums">$host     = 'smtp.yourdomain.com'; // e.g. smtp.gmail.com
+$username = 'your_username'; // e.g. yourname@gmail.com
+$password = 'your_password'; // your password
+$myName   = 'Your Name'; // your full name
+$myEmail  = 'your@email.com'; // your e-mail address</pre>
+			</section>
+			
+			<section id="psd">
+				<div class="page-header">
+					<h1>PSD</h1>
+				</div>
+				<p>I've included 10 PSD files that correspond with 2 color variations (Gold and Silver) and 5 different pages:</p>
+				<ol>
+					<li>Home</li>
+					<li>About Me</li>
+					<li>Resume</li>
+					<li>Portfolio</li>
+					<li>Contact</li>
+				</ol>
+			</section>
+			
+			<section id="credits">
+				<div class="page-header">
+					<h1>Credits</h1>
+				</div>
+				<p>I've used the following tools and resources as listed below. </p>
+				<ul>
+					<li>
+						<h5>Open source projects and jQuery plugins</h5>
+						<ul>
+							<li><a href="http://necolas.github.io/normalize.css/">normalize.css</a> by Nicolas Gallagher</li>
+							<li><a href="http://lesshat.com">LESS Hat</a> by creators of CSS Hat</li>
+							<li><a href="https://github.com/Synchro/PHPMailer">PHPMailer</a> by Brent R. Matzelle</li>
+							<li><a href="http://jquery.com">jQuery</a> by John Resig</li>
+							<li><a href="http://srobbin.com/jquery-plugins/backstretch/">jQuery Backstretch</a> by Scott Robbin</li>
+							<li><a href="http://jquery.malsup.com/cycle2/">jQuery Cycle2</a> by Mike Alsup</li>
+							<li><a href="http://dimsemenov.com/plugins/magnific-popup/">Magnific Popup</a> by Dmitry Semenov</li>
+							<li><a href="http://mixitup.io">MixItUp</a> by Patrick Kunka</li>
+							<li><a href="https://github.com/mathiasbynens/jquery-placeholder">jQuery Placeholder</a> by Mathias Bynens</li>
+							<li><a href="http://calebjacob.com/tooltipster/">jQuery Tooltipster</a> by Caleb Jacob</li>
+							<li><a href="http://parsleyjs.org">Parsley.js</a> by Guillaume Potier</li>
+							<li><a href="http://jasonmayes.com/projects/twitterApi">Twitter Fetcher</a> by Jason Mayes</li>
+						</ul>
+					</li>
+					<li>
+						<h5>Icons</h5>
+						<ul>
+							<li><a href="http://www.entypo.com">Entypo</a> by Daniel Bruce</li>
+						</ul>
+					</li>
+					<li>
+						<h5>Fonts</h5>
+						<ul>
+							<li><a href="http://www.google.com/fonts/specimen/Lato">Lato</a> by Łukasz Dziedzic</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			
+			<section id="thank-you">
+				<div class="page-header">
+					<h1>Thank you!</h1>
+				</div>
+				<p>Thanks again for purchasing this template. If you have any questions, please feel free to contact me. Have a nice day!</p>
+			</section>
+
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script> 
+		<script src="assets/js/bootstrap.js"></script>
+		<script src="assets/js/google-code-prettify/prettify.js"></script>
+		<script src="assets/js/init.js"></script>
+		 
+	</body>
+	
+</html>

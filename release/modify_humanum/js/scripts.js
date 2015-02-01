@@ -1,9 +1,9 @@
 // Settings
 var settings = {
-	pageTransition: 'scroll-vertical', // page transition (fade, scale, scroll-vertical, scroll-horizontal)
-	bodyBackgroundImage: true, // show body background image? (true, false)
-	bodyBackgroundImagePath: 'img/background-1.jpg', // path to the background image
-	twitterWidgetId: '355933225069187074' // your Twitter widget ID (see the documentation)
+	pageTransition: 'scroll-horizontal', // page transition (fade, scale, scroll-vertical, scroll-horizontal)
+	bodyBackgroundImage: false, // show body background image? (true, false)
+	bodyBackgroundImagePath: 'img/cathy.xiao.jpg', // path to the background image
+	twitterWidgetId: '561212587803959297' // your Twitter widget ID (see the documentation)
 }
 
 $(function() {
@@ -28,18 +28,18 @@ $(function() {
 		$container.add($header).add($footer).addClass('init');
 		setTimeout(function() {
 			$header.add($footer).addClass('visible');
-		}, 500);
+		}, 100);
 		setTimeout(function() {
 			$container.addClass('visible');
-		}, 500);
+		}, 100);
 		setTimeout(function() {
 			$container.add($header).add($footer).removeClass('init');
-		}, 1500);
+		}, 100);
 		
 		animateContent($('div.page-content[data-active]'));
 		setTimeout(function() {
 			initHomepageAnimations();
-		}, 1000);
+		}, 100);
 	}
 	
 	var animateContent = function($content) {
@@ -612,11 +612,11 @@ $(function() {
 
 /* ==========================================================================
    Fullscreen Mode
-   ========================================================================== */
+   ========================================================================== 
 
 	var $fullscreenTrigger = $('<div id="fullscreen-trigger"/>');
 	$mainnav.append($fullscreenTrigger);
-	
+
 	$fullscreenTrigger.click(function() {
 		if ($(this).hasClass('on')) {
 			$html.removeClass('full');
@@ -635,7 +635,7 @@ $(function() {
 		setTimeout(function() {	
 			$fullscreenTrigger.toggleClass('on');
 		}, 500);
-	});
+	});*/
 
 /* ==========================================================================
    Mobile Devices Support
@@ -699,7 +699,7 @@ $(function() {
 		
 		var $oldSubpageContent = $pageContentWrapper.children('[data-active]'),
 			$newSubpageContent = $pageContentWrapper.children('[data-menu-item='+menuIndex+']');
-		
+
 		if ($oldSubpageContent.attr('data-menu-item') != $newSubpageContent.attr('data-menu-item')) {
 		
 			$oldSubpageContent.removeAttr('data-active').addClass('new-hidden');

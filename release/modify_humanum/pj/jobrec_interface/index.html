@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>TextIntelligence</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/main.css" rel="stylesheet">
+		<link href="css/ladda.min.css" rel="stylesheet">
+		<link href="css/ladda-themeless.min.css" rel="stylesheet">
+		<style>
+			body {
+				font-family: georgia;
+			}
+			.modal .modal-body, .modal-sub-body {
+				text-align: center;
+				overflow-y: auto;
+			}
+			.box-wrapper {
+				padding: 10px;
+			}
+			form {
+				background-image: url("images/background.png");
+				background-repeat: repeat;
+				border-top: 8px solid #4E6778;
+				display: none;
+			}
+			.box {
+				background-image: url("images/background.png");
+				background-repeat: repeat;
+				padding: 10px;
+				text-align: center;
+				border-top: 3px solid #4E6778;
+			}
+			.submit-button {
+				background-image: url("images/background.png");
+				background-repeat: repeat;
+				display: none;
+			}
+			.overview-wrapper, .recommendation-wrapper {
+				border-top: 8px solid #4E6778;
+			}
+			.recommendation-wrapper {
+				display: none;
+			}
+			.table-wrapper {
+				border-top: 3px solid #4E6778;
+				background-image: url("images/background.png");
+				background-repeat: repeat;
+			}
+			.example {
+				margin-top: 15px;
+			}
+			svg text{
+				font-size:12px;
+			}
+			rect{
+				shape-rendering:crispEdges;
+			}
+			.img-wrapper {
+				width: 100%;
+				text-align: center;
+			}
+			.img {
+				width: 85%;
+				display: inline-block;
+				margin: 10px;
+			}
+
+			#largeModal1 {
+			}
+
+			path {  stroke: #fff; }
+			path:hover {  opacity:0.9; }
+			rect:hover {  fill:blue; }
+			.axis {  font: 10px georgia; }
+			.legend tr{    border-bottom:1px solid grey; }
+			.legend tr:first-child{    border-top:1px solid grey; }
+
+			.axis path,
+			.axis line {
+			  fill: none;
+			  stroke: #000;
+			  shape-rendering: crispEdges;
+			}
+
+			.x.axis path {  display: none; }
+			.legend{
+			    margin-bottom:0px;
+			    display:inline-block;
+			    border-collapse: collapse;
+			    border-spacing: 0px;
+			}
+			.legend td{
+			    padding:4px 5px;
+			    vertical-align:bottom;
+			}
+			.legendFreq, .legendPerc{
+			    align:right;
+			    width:5px;
+			}
+
+			.state, .state1, .state2, .state3, .state4, .state5, .state6, .state7, .state8, .state9 {
+		fill: none;
+		stroke: #a9a9a9;
+		stroke-width: 1;
+	}
+	.state:hover, .state1:hover, .state2:hover, .state3:hover, .state4:hover, .state5:hover, .state6:hover, .state7:hover, .state8:hover, .state9:hover {
+		fill-opacity:0.5;
+	}
+	#tooltip, #tooltip1, #tooltip2, #tooltip3, #tooltip4, #tooltip5, #tooltip6, #tooltip7, #tooltip8, #tooltip9 {   
+		position: absolute;           
+		text-align: center;
+		padding: 20px;             
+		margin: 10px;
+		font: 12px sans-serif;        
+		background: lightsteelblue;   
+		border: 1px;      
+		border-radius: 2px;           
+		pointer-events: none;  
+		background:rgba(0,0,0,0.9);
+		border:1px solid grey;
+		border-radius:5px;
+		font-size:12px;
+		width:auto;
+		padding:4px;
+		color:white;
+		opacity:0;       
+	}
+	#tooltip h4, #tooltip1 h4, #tooltip2 h4, #tooltip3 h4, #tooltip4 h4, #tooltip5 h4, #tooltip6 h4, #tooltip7 h4, #tooltip8 h4, #tooltip9 h4{
+		margin:0;
+		font-size:14px;
+	}
+
+	#tooltip table, #tooltip1 table, #tooltip2 table, #tooltip3 table, #tooltip4 table, #tooltip5 table, #tooltip6 table, #tooltip7 table, #tooltip8 table, #tooltip9 table{
+		table-layout:fixed;
+	}
+	#tooltip tr td, #tooltip1 tr td, #tooltip2 tr td, #tooltip3 tr td, #tooltip4 tr td, #tooltip5 tr td, #tooltip6 tr td, #tooltip7 tr td, #tooltip8 tr td, #tooltip9 tr td{
+		padding:0;
+		margin:0;
+	}
+	#tooltip tr td:nth-child(1), #tooltip1 tr td:nth-child(1), #tooltip2 tr td:nth-child(1), #tooltip3 tr td:nth-child(1), #tooltip4 tr td:nth-child(1), #tooltip5 tr td:nth-child(1), #tooltip6 tr td:nth-child(1), #tooltip7 tr td:nth-child(1),#tooltip8 tr td:nth-child(1),#tooltip9 tr td:nth-child(1){
+		width:50px;
+	}
+	#tooltip tr td:nth-child(2), #tooltip1 tr td:nth-child(2), #tooltip2 tr td:nth-child(2), #tooltip3 tr td:nth-child(2), #tooltip4 tr td:nth-child(2), #tooltip5 tr td:nth-child(2), #tooltip6 tr td:nth-child(2), #tooltip7 tr td:nth-child(2), #tooltip8 tr td:nth-child(2), #tooltip9 tr td:nth-child(2){
+		text-align:center;
+	}
+	.background {
+    fill: #FFFFFF;
+    fill-opacity: 0.01;
+}
+
+.component {
+    fill: #e1e1e1;
+}
+
+.component .label {
+    font-family: Myriad, "Helvetic Neue", Helvetica, Arial;
+    text-anchor: middle;
+    fill: #0000FF;
+}
+
+.arc {
+    stroke-weight:0.1;
+    fill: #4e8fff;
+}
+
+
+.arc2 {
+    stroke-weight:0.1;
+    fill: #3660b0;
+}
+
+
+.label {
+    font-family: georgia;
+    text-anchor: middle;
+}
+
+.radial-svg {
+    display: block;
+    margin: 0 auto;
+}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="content-wrapper">
+				<div><img src="images/logo.png"/></div>
+			 	<form id="form" class="form-horizontal col-md-12">
+				  <fieldset>
+				  	<div class="input-group col-lg-3 example">
+				      	<span class="input-group-addon">Example</span>
+				        <select class="form-control" id="select-example">
+			        	  <option id="default-example" selected="true">Choose one</option>
+		        		  <option id="ex1" value="ex1">Example One</option>
+				        </select>
+	      			</div>
+	      			<hr/>
+				    <h4><b>Education</b></h4>
+				    <hr>
+				    <div class="form-group">
+				      <label for="degreee" class="col-lg-2 control-label">Degree</label>
+				      <div class="col-lg-3">
+				        <select class="form-control" id="select-degree">
+			        	  <option id="default-degree" selected="true">Choose one</option>
+		        		  <option id="hs" value="hs">High School</option>
+				          <option id="ba" value="ba">BA</option>
+				          <option id="bs" value="bs">BS</option>
+				          <option id="ma" value="ma">MA</option>
+				          <option id="ms" value="ms">MS</option>
+				          <option id="phd" value="phd">PhD</option>
+				        </select>
+				      </div>
+				    </div>
+
+				    <div class="form-group">
+				      <label for="degreee" class="col-lg-2 control-label">Major</label>
+				      <div class="col-lg-3">
+				        <select class="form-control" id="select-major">
+				        	<option id="default-major" selected="true">Choose one</option>
+				          	<option value="Accounting" >Accounting</option>							 
+							<option value="African American Studies" id="aas">African American Studies</option>
+							<option value="Animation Arts" id="aa">Animation Arts</option>
+							<option value="Anthropology" id="an">Anthropology</option>
+							<option value="Architecture" id="ar">Architecture</option>
+							<option value="Art" id="art">Art</option>
+							<option value="Art History" id=""ah>Art History</option>		 							 
+							<option value="Asian American Studies" id="asian">Asian American Studies</option>
+							<option value="Biochemistry" id="bioche">Biochemistry</option>
+							<option value="Biology" id="bio">Biology</option>
+							<option value="Business  Administration" id="biz">Business  Administration</option>	 
+							<option value="Chemical Engineering" id="cheme">Chemical Engineering</option>
+							<option value="Chemistry" id="chem">Chemistry</option>
+							<option value="Chinese" id="chin">Chinese</option>
+							<option value="Civil Engineering" id="civil">Civil Engineering</option>
+							<option value="Classics" id="classics">Classics</option>
+							<option value="Communication" id="comm">Communication</option>
+							<option value="Computer Engineering" id="come">Computer Engineering</option>	
+							<option value="Computer Information Systems" id="cis">Computer Information Systems</option>
+							<option value="Computer Science" id="coms">Computer Science</option>
+							<option value="Dance" id="dance">Dance</option>
+							<option value="Dental Hygiene" id="dh">Dental Hygiene</option>
+							<option value="Economics" id="econ">Economics</option>
+							<option value="Electrical Engineering" id="ee">Electrical Engineering</option>
+							<option value="Engineering Technology" id="et">Engineering Technology</option>
+							<option value="English" id="eng">English</option>
+							<option value="Environmental Studies" id="es">Environmental Studies</option>
+							<option value="European Studies" id="euro">European Studies</option>
+							<option value="Fashion Design" id="fd">Fashion Design</option>
+							<option value="French" id="french">French</option>
+							<option value="Geography" id="geo">Geography</option>
+							<option value="Geology" id="geology">Geology</option>
+							<option value="German" id="ger">German</option>
+							<option value="History" id="hist">History</option>
+							<option value="Humanities" id="human">Humanities</option>
+							<option value="International Relations" id="ir">International Relations</option>
+							<option value="Italian" id="ita">Italian</option>
+							<option value="Japanese" id="jp">Japanese</option>
+							<option value="Latin American Studies" id="las">Latin American Studies</option>
+							<option value="Liberal Studies (Generic)" id="ls">Liberal Studies (Generic)</option>
+							<option value="Mathematics" id="math">Mathematics</option>
+							<option value="Mechanical Engineering" id="me">Mechanical Engineering</option>
+							<option value="Music" id="music">Music</option>
+							<option value="Nursing" id="nur">Nursing</option>
+							<option value="Philosophy" id="ph">Philosophy</option>
+							<option value="Physical Education (Physiological Science)" id="pe">Physical Education (Physiological Science)</option>
+							<option value="Physics" id="phy">Physics</option>
+							<option value="Political Science" id="ps">Political Science</option>
+							<option value="Psychology" id="psy">Psychology</option>
+							<option value="Public Policy and Administration" id="pp">Public Policy and Administration</option>
+							<option value="Religious Studies" id="rel">Religious Studies</option>
+							<option value="Russian" id="rus">Russian</option>
+							<option value="Sociology" id="soc">Sociology</option>
+							<option value="Spanish" id="span">Spanish</option>
+							<option value="Urban Studies" id="us">Urban Studies</option>
+				        </select>
+				      </div>
+				    </div>
+				    <h4><b>Skills & Coursework</b></h4>
+				    <hr>
+				    <div class="form-group">
+				      <label for="skills" class="col-lg-2 control-label">Skills</label>
+				      <div class="col-lg-10">
+				        <input type="input" class="form-control" id="skills" placeholder="Skills">
+				      </div>
+				    </div>
+				    <div class="form-group">
+				      <label for="coursework" class="col-lg-2 control-label">Coursework</label>
+				      <div class="col-lg-10">
+				        <textarea class="form-control" rows="3" id="coursework" placeholder="Coursework"></textarea>
+				      </div>
+				    </div>
+				    <div class="form-group">
+				      <label for="certificate" class="col-lg-2 control-label">Certificate</label>
+				      <div class="col-lg-10">
+				        <textarea class="form-control" rows="3" id="certificate" placeholder="Certificate"></textarea>
+				      </div>
+				    </div>
+
+				    <h4><b>Projects & Experience</b></h4>
+				    <hr/>
+				    <div class="form-group">
+				      <label for="projects" class="col-lg-2 control-label">Projects</label>
+				      <div class="col-lg-10">
+				        <textarea class="form-control" rows="5" id="projects" placeholder="Description of the projects you have done"></textarea>
+				      </div>
+				    </div>
+				    <div class="form-group">
+				      <label for="experience" class="col-lg-2 control-label">Experience</label>
+				      <div class="col-lg-10">
+				        <textarea class="form-control" rows="5" id="experience" placeholder="Previous work experience"></textarea>
+				      </div>
+				    </div>
+				  </fieldset>
+				  <div class="col-md-12 submit-button">
+				  	<button type="submit" class="btn btn-primary ladda-button pull-right" data-style="zoom-out" data-color="blue"><span class="ladda-label">Submit</span></button>
+<!-- 		        	<button type="submit" class="btn btn-primary btn-lg pull-right" id="submit">Submit</button>
+ -->		    	</div>
+				</form>
+				
+
+			    <div class="col-md-12 overview-wrapper">
+			    	<h4><b>Dataset Overview</b></h4>
+			    	<div class="col-md-4 box-wrapper">
+			    		<div class="box">
+			    			<h4><b>Industries</b></h4>
+			    			<div class="img-wrapper">
+				    			<a id="ind-modal" href="#" data-toggle="modal" data-target="#largeModal">
+				    				<img src="images/industries.png" class="img"/>
+				    			</a>
+			    			</div>
+			    		</div>
+			    	</div>
+			    	<div class="col-md-4 box-wrapper">
+			    		<div class="box">
+			    			<h4><b>Skills</b></h4>
+			    			<div class="img-wrapper">
+				    			<a id="ind-modal" href="#" data-toggle="modal" data-target="#largeModal1">
+				    				<img src="images/skills.png" class="img"/>
+				    			</a>
+			    			</div>
+			    		</div>
+			    	</div>
+			    	<div class="col-md-4 box-wrapper">
+			    		<div class="box">
+			    			<h4><b>Geo</b></h4>
+			    			<div class="img-wrapper">
+				    			<a id="ind-modal" href="#" data-toggle="modal" data-target="#largeModal2">
+				    				<img src="images/geo.png" class="img"/>
+				    			</a>
+			    			</div>
+			    		</div>
+			    	</div>
+			    	<hr>
+			    	<div class="col-md-12">
+		        		<button class="btn btn-primary btn-lg pull-right" id="jr" style="margin: 15px;">Job Recommendation</button>
+		    		</div>
+
+			    </div>
+
+
+
+			    <div class="col-md-12 recommendation-wrapper">
+			    	<h4><b>Your Potentials</b></h4>
+			    	<div class="col-md-6 box-wrapper">
+			    		<div class="box" style="text-align: center;">
+			    			<h4><b>To be a data scientist ...</b></h4>
+			    			<div id="div" style="display: inline-block; width: 170px; height: 170px;">
+							</div>
+			    		</div>
+			    	</div>
+			    	<div class="col-md-6 box-wrapper">
+			    		<div class="box">
+			    			<h4><b>We recommend you go to ...</b></h4>
+			    			<h4><span class="label label-success">Information Technology!</span></h4>
+			    		</div>
+			    	</div>
+			    	<hr style="clear: both;">
+			    	<div style="width: 100%;" class="table-wrapper">
+			    	<h4><b><span style="margin-top: 20px;">Job Recommendations</span></b></h4>
+			    	<table class="table">
+				        <thead>
+				          <tr>
+				            <th>Title</th>
+				            <th>Description</th>
+				            <th>Location</th>
+				            <th>Match</th>
+				          </tr>
+				        </thead>
+				        <tbody>
+				          <tr>
+				            <td><a href="http://www.careerbuilder.com/jobseeker/jobs/jobdetails.aspx?sc_cmp1=js_jrp_jobclick&APath=2.21.0.0.0&job_did=JHT2NL6BQT9WNF0R02Q&showNewJDP=yes&IPath=QHKV0A">Director of Data Science</a></td>
+				            <td>Ventures' Data Science practice. The Company has a strong culture of measurement, testing, and optimization ... </td>
+				            <td>Charlotte, NC</td>
+				            <td>92%</td>
+				          </tr>
+				          <tr>
+				            <td><a href="http://www.careerbuilder.com/jobseeker/jobs/jobdetails.aspx?sc_cmp1=js_jrp_jobclick&APath=2.21.0.0.0&job_did=J3F2205W6TM7Q9D03PL&showNewJDP=yes&IPath=QHKV0A">Director Analytic Science (Big Data)</a></td>
+				            <td>software and models, releasing to external customers, and providing high-quality support ...</td>
+				            <td>San Diego, CA</td>
+				            <td>87%</td>
+				          </tr>
+				          <tr>
+				            <td><a href="http://www.careerbuilder.com/jobseeker/jobs/jobdetails.aspx?APath=2.21.0.0.0&job_did=JJW54Q6X5MJMX4T0Q9Q&sc_cmp1=js_jrp_jobclick&IPath=QHKV0A">Director Data Sciences Group</a></td>
+				            <td>Manages Esurance's Data Sciences Group. The Data Sciences group is responsible for ...</td>
+				            <td>San Francisco, CA</td>
+				            <td>86%</td>
+				          </tr>
+				          <tr>
+				            <td><a href="http://www.careerbuilder.com/jobseeker/jobs/jobdetails.aspx?sc_cmp1=js_jrp_jobclick&APath=2.31.0.0.0&job_did=J3J66K62VWBY31S4CW5&showNewJDP=yes&IPath=ILKV0A">Solutions Architect - Data Science Business Intelligence</a></td>
+				            <td>Retention If you are a Solutions Architect with a deep understanding of Data Science, Business Intelligence ... </td>
+				            <td>Encinitas, CA</td>
+				            <td>83%</td>
+				          </tr>
+				          <tr>
+				            <td><a href="http://www.careerbuilder.com/jobseeker/jobs/jobdetails.aspx?sc_cmp1=js_jrp_jobclick&APath=2.31.0.0.0&job_did=J3J11G65F38FS2YSRFF&showNewJDP=yes&IPath=ILKV0A">Data Analyst/Data Science – R, Python, Hadoop</a></td>
+				            <td>Data Analyst/Data Science – R, Python, Hadoop As a member of the Claims...</td>
+				            <td>Maryfield Heights, OH</td>
+				            <td>83%</td>
+				          </tr>
+				          <tr>
+				            <td><a href="http://www.careerbuilder.com/jobseeker/jobs/jobdetails.aspx?sc_cmp1=js_jrp_jobclick&APath=2.31.0.0.0&job_did=J3H1SF6B5N3W8G72XQW&showNewJDP=yes&IPath=ILKV0A">Sr. Analyst of Decision Sciences</a></td>
+				            <td>The Decision Sciences team is responsible for mining data driven ...</td>
+				            <td>Chicago, IL</td>
+				            <td>81%</td>
+				          </tr>
+				          <tr>
+				            <td><a href="http://www.careerbuilder.com/jobseeker/jobs/jobdetails.aspx?APath=2.31.0.0.0&job_did=J3G2RR6M3VC4ST7HTRN&sc_cmp1=js_jrp_jobclick&IPath=ILKV0A">Associate Data Scientist</a></td>
+				            <td>We are currently seeking talented Associate Data Scientist for our San Antonio, TX facility ...</td>
+				            <td>San Antonio, TX</td>
+				            <td>79%</td>
+				          </tr>
+				          <tr>
+				            <td><a href="http://www.careerbuilder.com/jobseeker/jobs/jobdetails.aspx?sc_cmp1=js_jrp_jobclick&APath=2.31.0.0.0&job_did=J3H5L06GQMY1VJ3V2S3&showNewJDP=yes&IPath=ILKGV0C">Manager, Data Science</a></td>
+				            <td>As part of the Data Science team and the broader Commercial Services Analytics team ...</td>
+				            <td>Addison, TX</td>
+				            <td>78%</td>
+				          </tr>
+				          <tr>
+				            <td><a href="http://www.careerbuilder.com/jobseeker/jobs/jobdetails.aspx?sc_cmp1=js_jrp_jobclick&APath=2.31.0.0.0&job_did=JHV5475XBMBW4S7KL9H&showNewJDP=yes&IPath=ILKGV0B">K-12 Supervisor of Mathematics & Science</a></td>
+				            <td>K-12 Supervisor of Mathematics & Science curriculum and instruction rigor Knowledge of the Common Core States ... </td>
+				            <td>Penns Grove, NJ</td>
+				            <td>73%</td>
+				          </tr>
+				        </tbody>
+				      </table>
+				  </div>
+			    </div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Industry Overview</h4>
+      </div>
+      <div class="modal-body" id="ind-body" style="height: 1100px;">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="largeModal1" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg" style="width: 90%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Skill Overview</h4>
+      </div>
+      <div class="modal-body" id="skill-body">
+      		<div id="com-skills" class="modal-sub-body">
+      			<h5><b>Skills for Computing</b></h5>
+      		</div>
+      		<hr/>
+      		<div id="stat-skills" class="modal-sub-body">
+      			<h5><b>Skills for Statistics</b></h5>
+      		</div>
+      		<hr/>
+      		<div id="vis-skills" class="modal-sub-body">
+      			<h5><b>Skills for Visualization</b></h5>
+      		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="largeModal2" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg" style="width: 90%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Geo Information</h4>
+      </div>
+      <div class="modal-body" id="skill-body">
+      		<div id="cs" class="modal-sub-body">
+      			<div id="tooltip"></div>
+				<svg width="960" height="600" id="statesvg"></svg>
+      		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</div>
+        </div>
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/d3.min.js"></script>
+		<script src="js/spin.min.js"></script>
+		<script src="js/ladda.min.js"></script>
+		<script src="js/industry.js"></script>
+		<script src="js/main.js"></script>
+	</body>
+</html>

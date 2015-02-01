@@ -31,6 +31,7 @@
    28. Initial Animations
    29. IE Fixes
    30. Template Preview Styles
+   31. Custom
    ========================================================================== */
 /* ==========================================================================
    1. Layout & Grid System
@@ -276,6 +277,7 @@ body[data-page-transition=scroll-horizontal] .page-content.new-hidden {
 }
 .main-content {
   margin: 0 auto;
+  max-width: 854px;
 }
 /* ==========================================================================
    2. Body Background
@@ -337,8 +339,8 @@ select {
 }
 p,
 ul,
-ol,
 dl,
+ol,
 pre,
 blockquote,
 figure,
@@ -1428,7 +1430,7 @@ textarea.placeholder {
    13. Filter Tabs
    ========================================================================== */
 .filter-tabs {
-  margin: -35px -53px 40px;
+  margin: -35px -53px 20px;
   padding: 15px 0;
   position: relative;
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQtdWNnZy1nZW5lcmF0ZWQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0icmdiKDI1NSwgMjU1LCAyNTUpIiBzdG9wLW9wYWNpdHk9IjAiLz48c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0icmdiKDI1NSwgMjU1LCAyNTUpIiBzdG9wLW9wYWNpdHk9IjAuMyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0icmdiKDI1NSwgMjU1LCAyNTUpIiBzdG9wLW9wYWNpdHk9IjAiLz48L2xpbmVhckdyYWRpZW50PjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+PC9zdmc+);
@@ -3319,6 +3321,15 @@ img.mfp-img,
 /* ==========================================================================
    24. Resume
    ========================================================================== */
+.timeline p,
+.timeline ul,
+.timeline dl
+.timeline ol,
+.timeline pre,
+.timeline blockquote,
+.timeline figure{
+  margin: 0 0 0px;
+}
 dl.timeline dt {
   width: 114px;
   float: left;
@@ -4907,4 +4918,139 @@ ol > li::before {
 }
 .box-light .box-heading {
   color: #a98e45;
+}
+/* ==========================================================================
+   31. Custom
+   ========================================================================== */
+.project-panel {
+  padding: 20px;
+  overflow: hidden;
+  background: #fcfbf5;
+  border-radius: 5px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+.project-panel > figure {
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px;
+}
+.project-panel > figure .item-slider {
+  padding-top: 0;
+  max-width: 100%;
+}
+.project-panel > figure .item-slider ul {
+  height: auto !important;
+  margin: 0;
+}
+.project-panel > figure .item-slider ul li {
+  width: 100%;
+  padding: 0;
+}
+.project-panel > figure .item-slider ul li::before {
+  display: none;
+}
+.project-panel > figure .item-slider ul li img {
+  display: block;
+}
+.project-panel > figure .item-slider .pager {
+  top: auto;
+  bottom: 10px;
+  -webkit-transition: opacity 0.15s;
+  -moz-transition: opacity 0.15s;
+  -o-transition: opacity 0.15s;
+  -ms-transition: opacity 0.15s;
+  transition: opacity 0.15s;
+}
+.project-panel > figure .item-slider .pager div::before,
+.project-panel > figure .item-slider .pager div::after {
+  display: none;
+}
+.project-panel > figure + div {
+  width: 320px;
+  margin: 0 0 0 20px;
+  float: left;
+}
+.project-panel h1 {
+  margin: 0 0 30px;
+}
+.project-panel p,
+.project-panel dl {
+  margin: 0;
+}
+.project-panel p + p,
+.project-panel dl + p {
+  margin-top: 24px;
+}
+.project-panel p + dl {
+  margin-top: 30px;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .project-panel p + dl {
+    margin-top: -10px;
+  }
+}
+.project-panel dt {
+  display: inline;
+  margin: 0 3px 0 0;
+  color: #a29877;
+}
+.project-panel dt .helper {
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin: 13px 0 10px;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQtdWNnZy1nZW5lcmF0ZWQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0icmdiKDIwNiwgMTk3LCAxNjcpIiBzdG9wLW9wYWNpdHk9IjAiLz48c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0icmdiKDIwNiwgMTk3LCAxNjcpIiBzdG9wLW9wYWNpdHk9IjAuNyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0icmdiKDIwNiwgMTk3LCAxNjcpIiBzdG9wLW9wYWNpdHk9IjAiLz48L2xpbmVhckdyYWRpZW50PjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+PC9zdmc+);
+  background-image: -moz-linear-gradient(left, rgba(206, 197, 167, 0) 0%, rgba(206, 197, 167, 0.7) 50%, rgba(206, 197, 167, 0) 100%);
+  background-image: -webkit-linear-gradient(left, rgba(206, 197, 167, 0) 0%, rgba(206, 197, 167, 0.7) 50%, rgba(206, 197, 167, 0) 100%);
+  background-image: -o-linear-gradient(left, rgba(206, 197, 167, 0) 0%, rgba(206, 197, 167, 0.7) 50%, rgba(206, 197, 167, 0) 100%);
+  background-image: linear-gradient(left, rgba(206, 197, 167, 0) 0%, rgba(206, 197, 167, 0.7) 50%, rgba(206, 197, 167, 0) 100%);
+}
+.project-panel dd {
+  display: inline;
+  margin: 0;
+  font-weight: bold;
+}
+.project-panel dd ul {
+  margin: 10px 0 0;
+}
+.project-panel dd li {
+  padding-left: 0px;
+}
+@media only screen and (min-width: 1024px) and (max-width: 1040px) {
+  .project-panel > figure {
+    width: 620px;
+  }
+}
+@media only screen and (min-width: 660px) and (max-width: 1023px) {
+  .project-panel {
+    padding: 0;
+  }
+  .project-panel > figure {
+    float: none;
+  }
+  .project-panel > figure + div {
+    width: 600px;
+    margin: 0;
+    padding: 20px;
+    float: none;
+  }
+}
+@media only screen and (max-width: 659px) {
+  .project-panel {
+    padding: 0;
+  }
+  .project-panel > figure {
+    width: 100%;
+    float: none;
+  }
+  .project-panel > figure + div {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    float: none;
+  }
 }
